@@ -1,0 +1,134 @@
+[gd_scene load_steps=16 format=3 uid="uid://3npwli57vg0s"]
+
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_5smtc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vm6gv"]
+size = Vector3(10, 0.25, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bq4wb"]
+size = Vector3(10, 0.25, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8x4u"]
+size = Vector3(4.5, 5.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rt2hl"]
+size = Vector3(4.5, 5.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wiqdo"]
+size = Vector3(4.5, 5.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2orgv"]
+size = Vector3(4.5, 5.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5svqs"]
+size = Vector3(1.25, 2.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fkv8m"]
+size = Vector3(1.25, 2.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6h8ta"]
+size = Vector3(10.25, 5.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_16str"]
+size = Vector3(10.25, 5.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vnxfs"]
+size = Vector3(10.25, 5.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fn58p"]
+size = Vector3(10.25, 5.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_voocr"]
+size = Vector3(10.25, 5.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_if2bo"]
+size = Vector3(10.25, 5.25, 0.25)
+
+[node name="Room" type="Node3D"]
+script = ExtResource("1_5smtc")
+north = 1
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.125, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
+mesh = SubResource("BoxMesh_vm6gv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("BoxShape3D_bq4wb")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_vm6gv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_bq4wb")
+
+[node name="CentralLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+omni_range = 7.5
+
+[node name="NorthWall" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.625, -5.125)
+
+[node name="@StaticBody3D@30086" type="StaticBody3D" parent="NorthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 0)
+
+[node name="collider" type="CollisionShape3D" parent="NorthWall/@StaticBody3D@30086"]
+shape = SubResource("BoxShape3D_i8x4u")
+
+[node name="mesh" type="MeshInstance3D" parent="NorthWall/@StaticBody3D@30086"]
+mesh = SubResource("BoxMesh_rt2hl")
+
+[node name="@StaticBody3D@30087" type="StaticBody3D" parent="NorthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0, 0)
+
+[node name="collider" type="CollisionShape3D" parent="NorthWall/@StaticBody3D@30087"]
+shape = SubResource("BoxShape3D_wiqdo")
+
+[node name="mesh" type="MeshInstance3D" parent="NorthWall/@StaticBody3D@30087"]
+mesh = SubResource("BoxMesh_2orgv")
+
+[node name="@StaticBody3D@30088" type="StaticBody3D" parent="NorthWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="collider" type="CollisionShape3D" parent="NorthWall/@StaticBody3D@30088"]
+shape = SubResource("BoxShape3D_5svqs")
+
+[node name="mesh" type="MeshInstance3D" parent="NorthWall/@StaticBody3D@30088"]
+mesh = SubResource("BoxMesh_fkv8m")
+
+[node name="SouthWall" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.625, 5.125)
+
+[node name="wall" type="StaticBody3D" parent="SouthWall"]
+
+[node name="collider" type="CollisionShape3D" parent="SouthWall/wall"]
+shape = SubResource("BoxShape3D_6h8ta")
+
+[node name="mesh" type="MeshInstance3D" parent="SouthWall/wall"]
+mesh = SubResource("BoxMesh_16str")
+
+[node name="EastWall" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.125, 2.625, 0)
+
+[node name="wall" type="StaticBody3D" parent="EastWall"]
+
+[node name="collider" type="CollisionShape3D" parent="EastWall/wall"]
+shape = SubResource("BoxShape3D_vnxfs")
+
+[node name="mesh" type="MeshInstance3D" parent="EastWall/wall"]
+mesh = SubResource("BoxMesh_fn58p")
+
+[node name="WestWall" type="Node3D" parent="."]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, -5.125, 2.625, 0)
+
+[node name="wall" type="StaticBody3D" parent="WestWall"]
+
+[node name="collider" type="CollisionShape3D" parent="WestWall/wall"]
+shape = SubResource("BoxShape3D_voocr")
+
+[node name="mesh" type="MeshInstance3D" parent="WestWall/wall"]
+mesh = SubResource("BoxMesh_if2bo")
